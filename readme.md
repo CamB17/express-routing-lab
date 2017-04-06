@@ -32,7 +32,7 @@ By the end of the lab, you should have an app with all of the 5 RESTful routes l
 
 Once you spin up your local server, open up Postman. Look below at the Postman commands, and try to get each of your 5 routes to match the expected responses. The HTTP response status should always be 2XX.
 
-`Index` Postman Request
+`Index` Postman Request //done
 
 - Method: GET
 - Endpoint: `http://localhost:3000/candies`
@@ -42,7 +42,7 @@ Once you spin up your local server, open up Postman. Look below at the Postman c
 
 ---
 
-`Show` Postman Request
+`Show` Postman Request //done
 
 - Method: GET
 - Endpoint: `http://localhost:3000/candies/3`
@@ -52,7 +52,7 @@ Once you spin up your local server, open up Postman. Look below at the Postman c
 
 ---
 
-`Create` Postman Request
+`Create` Postman Request //done
 
 - Method: POST
 - Header: "Content-Type: application/json"
@@ -65,7 +65,7 @@ Once you spin up your local server, open up Postman. Look below at the Postman c
 ---
 
 
-A second `Index` Postman Request
+A second `Index` Postman Request //done
 
 - Method: GET
 - Endpoint: `http://localhost:3000/candies`
