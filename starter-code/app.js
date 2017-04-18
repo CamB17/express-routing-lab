@@ -7,14 +7,12 @@ var bodyParser = require('body-parser');
 var candyRouter = require('./candyRouter');
 
 //Routes
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/json' }));
 //How do we redirect the /candies path
 //through our candyRouter?
 //Hint: you need app.use
 app.use('/candies', candyRouter);
 
 
-app.get('/candy', function(req, res){
-	res.json(" new candy ");//ands new candy
-});
+
 app.listen(port);

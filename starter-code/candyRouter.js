@@ -1,15 +1,32 @@
 'use strict'
 const express = require('express');
 var bodyParser = require('body-parser');
-let candyRouter = express.Router();
+var candyRouter = express.Router();
+var jsonParser = bodyParser.json();
 	
 //Array of candies
 var candies = [
-			   {"id":1,"name":"Chewing Gum","color":"Red"},
-			   {"id":2,"name":"Pez","color":"Green"},
-			   {"id":3,"name":"Marshmellow","color":"Pink"},
-			   {"id":4,"name":"Candy Stick","color":"Blue"}
-			  ];
+		{
+			"id":1,
+			 "name":"Chewing Gum",
+			 "color":"Red"
+			},
+			{
+			"id":2,
+			"name":"Pez",
+			"color":"Green"
+			},
+			{
+			"id":3,
+			"name":"Marshmellow",
+			"color":"Pink"
+			},
+			{
+			"id":4,
+			"name":"Candy Stick",
+			"color":"Blue"
+			}
+]
 
 //Index
 candyRouter.get('/', function(req, res) {
@@ -24,22 +41,37 @@ candyRouter.get("/:num", function(req, res) {
 });
 
 
-//Show new candy(POST)
+//Create new candy
 candyRouter.post("/", function(req, res) {
+	let candy = {
+		id: req.body.id,
+		name: req.body.name,
+		color: req.body.color
+	}
 	candies.push(req.body); // add .push to array
+	res.json(candy);
 });
 
 //Update(PUT)
-candyRouter.put('/', function(req, res) {
-	for(i = 3; i < candies.length; i++); // Create for loop?
-		candies.send(req.body);
+candyRouter.put('/:id', function(req, res) {
+	candies[req.params.id-1]=req.body;
+	res.end();
 });
 
 //Delete
-//candyRouter.delete("/", function(req, res) {
-//	candies.send(candies[3]); // Delete from body
-//});
-
+candyRouter.delete('/:id', function(req, res) {
+	let y = req.params.id;
+	for(var i = 0; i < candies.length; i++) {
+		if (y == candies[i].id) {
+			console.log("In if side");
+				candies.splice(i, 1);
+				return res.send('"message": "deleted"')
+		} else { let error = 'no candy';}
+	  }
+	  if(error){
+	  	res.send(error);
+	  }
+});
 
 
 module.exports = candyRouter;
